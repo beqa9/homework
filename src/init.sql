@@ -1,7 +1,3 @@
-create schema countries;
-create schema users;
-create schema companies;
-create schema products;
 CREATE TABLE countries(
     id serial PRIMARY KEY,
     iso_code_2 varchar(2) NOT NULL,
@@ -17,9 +13,9 @@ CREATE TABLE users(
     last_name varchar(255),
     last_login_date timestamp,
     active boolean NOT NULL default true,
-    changed_by integer,
+    changed_by integer references users(id),
     changed_at timestamp,
-    created_by integer,
+    created_by integer references users(id),
     created_at timestamp
 );
 CREATE TABLE companies(
@@ -29,9 +25,9 @@ CREATE TABLE companies(
     name varchar(255) NOT NULL,
     name_geo varchar(255) NOT NULL,
     active boolean NOT NULL default true,
-    changed_by integer,
+    changed_by integer references users(id),
     changed_at timestamp,
-    created_by integer,
+    created_by integer references users(id),
     created_at timestamp
 );
 CREATE TABLE products(
@@ -42,8 +38,8 @@ CREATE TABLE products(
     country_id integer references countries(id),
     description varchar(255),
     active boolean NOT NULL default true,
-    changed_by integer,
+    changed_by integer references users(id),
     changed_at timestamp,
-    created_by integer,
+    created_by integer references users(id),
     created_at timestamp
 );
