@@ -1,12 +1,8 @@
 package com.example.shop.controllers;
 
-import com.example.shop.entities.Companies;
-import com.example.shop.entities.Products;
+import com.example.shop.entities.Product;
 import com.example.shop.services.ProductsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
@@ -20,11 +16,15 @@ public class ProductsController{
     }
 
     @GetMapping
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productsService.getAllProducts();
     }
     @GetMapping("/{name}")
-    public List<Products> searchProductsByName(@PathVariable String name) {
+    public List<Product> searchProductsByName(@PathVariable String name) {
         return productsService.searchProductsByName(name);
+    }
+    @PostMapping
+    public Product addCompany(@RequestBody Product products) {
+        return productsService.addProduct(products);
     }
 }

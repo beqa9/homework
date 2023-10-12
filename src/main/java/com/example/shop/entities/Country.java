@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(schema = "public", name = "countries")
-public class Countries {
+public class Country {
 
     @Id
     private Integer id;

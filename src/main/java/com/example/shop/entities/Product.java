@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(schema = "public", name = "products")
-public class Products {
+public class Product {
 
     @Id
     private Integer id;

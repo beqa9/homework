@@ -1,7 +1,6 @@
 package com.example.shop.services;
 
-import com.example.shop.entities.Companies;
-import com.example.shop.entities.Products;
+import com.example.shop.entities.Product;
 import com.example.shop.repositories.ProductsRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +14,15 @@ public class ProductsServiceImpl implements ProductsService{
     }
 
     @Override
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productsRepository.findAll();
     }
     @Override
-    public List<Products> searchProductsByName(String name) {
+    public List<Product> searchProductsByName(String name) {
         return productsRepository.findByNameStartingWithIgnoreCase(name);
+    }
+    @Override
+    public Product addProduct(Product products) {
+        return productsRepository.saveAndFlush(products);
     }
 }

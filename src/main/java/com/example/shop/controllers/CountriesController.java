@@ -1,6 +1,6 @@
 package com.example.shop.controllers;
 
-import com.example.shop.entities.Countries;
+import com.example.shop.entities.Country;
 import com.example.shop.services.CountriesService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class CountriesController {
     }
 
     @GetMapping
-    public List<Countries> getAllCountries() {
+    public List<Country> getAllCountries() {
         return countriesService.getAllCountries();
     }
 }

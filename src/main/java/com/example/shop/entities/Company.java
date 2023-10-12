@@ -7,22 +7,20 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @Entity
 @Table(schema = "public", name = "companies")
-public class Companies {
+public class Company {
 
     @Id
     private Integer id;
 
     @Column(name="parent_id")
-    private Integer parent_id;
+    private Integer parentId;
 
     @Column(name="country_id")
-    private Integer country_id;
+    private Integer countryId;
 
     @Column(name="name")
     private String name;

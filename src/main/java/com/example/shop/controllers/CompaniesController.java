@@ -1,6 +1,7 @@
 package com.example.shop.controllers;
 
-import com.example.shop.entities.Companies;
+import com.example.shop.entities.Company;
+import com.example.shop.models.CompanyModel;
 import com.example.shop.services.CompaniesService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,16 +18,16 @@ public class CompaniesController {
     }
 
     @GetMapping
-    public List<Companies> getAllCompanies() {
+    public List<Company> getAllCompanies() {
         return companiesService.getAllCompanies();
     }
 
     @GetMapping("/{name}")
-    public List<Companies> searchCompaniesByName(@PathVariable String name) {
+    public List<Company> searchCompaniesByName(@PathVariable String name) {
         return companiesService.searchCompaniesByName(name);
     }
-    @PostMapping
-    public Companies addCompany(@RequestBody Companies company) {
-        return companiesService.addCompany(company);
+    @PostMapping("/{id}")
+    public Company addCompany(@PathVariable Integer id,@RequestBody CompanyModel companyModel) {
+        return companiesService.addCompany(id,companyModel);
     }
 }

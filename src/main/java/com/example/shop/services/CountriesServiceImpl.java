@@ -1,6 +1,6 @@
 package com.example.shop.services;
 
-import com.example.shop.entities.Countries;
+import com.example.shop.entities.Country;
 import com.example.shop.repositories.CountriesRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class CountriesServiceImpl implements CountriesService {
     }
 
     @Override
-    public List<Countries> getAllCountries() {
+    public List<Country> getAllCountries() {
         return countriesRepository.findAll();
     }
 }

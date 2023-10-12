@@ -1,11 +1,11 @@
 package com.example.shop.services;
 
-import com.example.shop.entities.Companies;
-import com.example.shop.entities.Products;
+import com.example.shop.entities.Product;
 
 import java.util.List;
 
 public interface ProductsService {
-    List<Products> getAllProducts();
-    List<Products> searchProductsByName(String name);
+    List<Product> getAllProducts();
+    List<Product> searchProductsByName(String name);
+    Product addProduct(Product products);
 }
