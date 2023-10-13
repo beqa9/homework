@@ -1,6 +1,7 @@
 package com.example.shop.services;
 
 import com.example.shop.entities.Product;
+import com.example.shop.models.ProductModel;
 import com.example.shop.repositories.ProductsRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,21 @@ public class ProductsServiceImpl implements ProductsService{
     public List<Product> searchProductsByName(String name) {
         return productsRepository.findByNameStartingWithIgnoreCase(name);
     }
+
     @Override
-    public Product addProduct(Product products) {
-        return productsRepository.saveAndFlush(products);
+    public Product addProduct(Product product) {
+        return productsRepository.save(product);
+    }
+
+    @Override
+    public Product addProduct(Integer id, ProductModel productModel) {
+        Product product = new Product();
+        product.setId(id);
+        product.setEan(productModel.ean());
+        product.setName(productModel.name());
+        product.setCompanyID(productModel.companyID());
+        product.setCountryID(productModel.countryID());
+        productsRepository.save(product);
+        return product;
     }
 }

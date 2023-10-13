@@ -3,7 +3,8 @@ package com.example.shop.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,7 +14,7 @@ import java.util.Objects;
 @Getter
 @Entity
 @Table(schema = "public", name = "users")
-public class User  {
+public class User implements UserDetails {
 
     @Id
     private Integer id;
@@ -38,9 +39,29 @@ public class User  {
 
     @Column(name = "created_by")
     private Integer createdBy;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return Objects.equals(active, Boolean.TRUE);
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return Objects.equals(active, Boolean.TRUE);
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return Objects.equals(active, Boolean.TRUE);
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return Objects.equals(active, Boolean.TRUE);
+    }
 }
-
-
-
-
-

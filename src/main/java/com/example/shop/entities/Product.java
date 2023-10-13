@@ -23,10 +23,10 @@ public class Product {
     private String name;
 
     @Column(name="company_id")
-    private Integer companyId;
+    private Integer companyID;
 
     @Column(name="country_id")
-    private Integer countryId;
+    private Integer countryID;
 
     @Column(name="description")
     private String description;

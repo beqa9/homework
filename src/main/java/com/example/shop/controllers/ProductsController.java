@@ -1,6 +1,9 @@
 package com.example.shop.controllers;
 
+import com.example.shop.entities.Company;
 import com.example.shop.entities.Product;
+import com.example.shop.models.CompanyModel;
+import com.example.shop.models.ProductModel;
 import com.example.shop.services.ProductsService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +26,8 @@ public class ProductsController{
     public List<Product> searchProductsByName(@PathVariable String name) {
         return productsService.searchProductsByName(name);
     }
-    @PostMapping
-    public Product addCompany(@RequestBody Product products) {
-        return productsService.addProduct(products);
+    @PostMapping("/{id}")
+    public Product addProduct(@PathVariable Integer id, @RequestBody ProductModel productModel) {
+        return productsService.addProduct(id,productModel);
     }
 }

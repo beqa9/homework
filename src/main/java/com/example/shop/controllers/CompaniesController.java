@@ -26,8 +26,9 @@ public class CompaniesController {
     public List<Company> searchCompaniesByName(@PathVariable String name) {
         return companiesService.searchCompaniesByName(name);
     }
+
     @PostMapping("/{id}")
-    public Company addCompany(@PathVariable Integer id,@RequestBody CompanyModel companyModel) {
-        return companiesService.addCompany(id,companyModel);
+    public Company addCompany(@PathVariable Integer id, @RequestBody CompanyModel companyModel) {
+        return companiesService.addCompany(id, companyModel);
     }
 }
