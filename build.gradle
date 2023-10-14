@@ -23,9 +23,13 @@ repositories {
 
 dependencies {
     implementation(
+            'org.apache.commons:commons-lang3:3.13.0',
             'org.springframework.boot:spring-boot-starter-data-jpa',
             'org.springframework.boot:spring-boot-starter-web',
-            'org.springframework.boot:spring-boot-starter-security'
+            'org.springframework.boot:spring-boot-starter-validation',
+            'org.springframework.boot:spring-boot-starter-security',
+            'jakarta.validation:jakarta.validation-api:3.0.2',
+            'org.flywaydb:flyway-core'
     )
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
