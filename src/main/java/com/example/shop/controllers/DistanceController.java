@@ -19,21 +19,17 @@ class DistanceController {
     @GetMapping
     public double calculateDistance() {
         try {
-            // Read the Excel file
             FileInputStream file = new FileInputStream("/home/beqa/Documents/exel.xlsx");
             Workbook workbook = WorkbookFactory.create(file);
             Sheet sheet = workbook.getSheetAt(0);
 
-            // Get the coordinates from the Excel file
             double lat1 = sheet.getRow(0).getCell(0).getNumericCellValue();
             double lon1 = sheet.getRow(0).getCell(1).getNumericCellValue();
             double lat2 = sheet.getRow(1).getCell(0).getNumericCellValue();
             double lon2 = sheet.getRow(1).getCell(1).getNumericCellValue();
 
-            // Calculate the distance
             double distance = GFG.calculateDistance(lat1, lon1, lat2, lon2);
 
-            // Close the workbook and file
             workbook.close();
             file.close();
 
