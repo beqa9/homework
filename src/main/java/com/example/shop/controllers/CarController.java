@@ -1,6 +1,7 @@
 package com.example.shop.controllers;
 
 import com.example.shop.entities.Data;
+import com.example.shop.entities.DataHistory;
 import com.example.shop.services.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,13 @@ public class CarController {
             data.setLongitude(longitude);
             data.setName(carNumber);
 
+            DataHistory dataHistory = new DataHistory();
+            dataHistory.setLatitude(latitude);
+            dataHistory.setLongtitude(longitude);
+            dataHistory.setName(carNumber);
+
             dataService.saveToDatabase(data);
+            dataService.saveToHistoryDatabase(dataHistory);
 
             return ResponseEntity.ok("Coordinates for car " + carNumber + " saved successfully.");
         } catch (Exception e) {
